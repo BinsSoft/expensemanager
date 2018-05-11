@@ -19,7 +19,9 @@ export class Global
 	loggedUser : any ;
 	getLoggedUser()  {
 		let authUser = this.cookies.get('_u');
-		this.loggedUser = JSON.parse( atob(authUser));
+		if(authUser){
+			this.loggedUser = JSON.parse( atob(authUser));
+		}
 		
 	}
 
