@@ -1,0 +1,29 @@
+<header>
+	<div class="left-float"><a href="#/home" mat-mini-fab color="primary">&#8610;</a>  {{groupDetails['name']}}</div>
+	<div class="right-float"><a href="#/home" class="menu-link"></a></div>
+	<div class="clearfix"></div>
+</header>
+<div class="bottom-container" *ngIf="groupDetails">
+	<mat-card>
+		<table class="table" cellspacing="0">
+			<tr *ngFor="let i of groupDetails.members; let index = index"  >
+				<td><span class="name-icon {{ i.name | slice : 0 :1  }}-icon">{{ i.name | slice : 0 :1  }}</span></td>
+				<td>{{ i.name }} <span class="admin-span" *ngIf="i.admin==1">admin</span></td>
+				<td>
+					<div><label>Deposit : </label> &#8377; {{ i.deposit  }}</div>
+					<div><label>Pay : </label> &#8377; {{ i.paidBy }}</div>
+					<div><label>Pay Share: </label> &#8377; {{ i.paidFor }}</div>
+					<div><label>Balance : </label><span [ngClass]="{ 'red-text':i.balance < 0 ,'green-text': i.balance > 0 }">&#8377; {{ i.balance }}</span></div>
+				</td>
+				<td>
+					<a class="menu-link" [matMenuTriggerFor]="menu"></a>
+					<mat-menu #menu="matMenu" class="table-menu">
+					  <a mat-menu-item *ngIf="i.admin !=1 && authUser.id == adminUser.id" (click)="openDepositPopup(i, groupDetails)">Deposit</a>
+					  <a mat-menu-item href="#/pay?gId={{ groupDetails.id }}&pbyid={{i.id}}">Pay</a>
+					</mat-menu>
+				</td>
+			</tr>
+		</table>
+	</mat-card>
+</div>
+

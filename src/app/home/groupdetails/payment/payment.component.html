@@ -1,0 +1,72 @@
+<header>
+	<div class="left-float"><a href="#/group-details?id={{ groupDetails['id'] }}" mat-mini-fab color="primary">&#8610;</a> Add Expense</div>
+	<div class="right-float"></div>
+	<div class="clearfix"></div>
+</header>
+<div class="bottom-container">
+	<mat-card>
+		<mat-card-content>
+			<mat-form-field class="text-full-width">
+			    <input matInput placeholder="Description" value="" [(ngModel)]="pay.description">
+			    <em class="frm-error-em" *ngIf="submitted && !pay.description">Please provide description</em>
+			</mat-form-field>
+			<mat-form-field class="text-full-width">
+			    <mat-select placeholder="Category" [(ngModel)]="pay.category">
+				    <mat-option *ngFor="let c of category" [value]="c">
+				      {{ c }}
+				    </mat-option>
+				</mat-select>
+				<em class="frm-error-em" *ngIf="submitted && !pay.category">Please provide category</em>
+			</mat-form-field>
+			<div >
+				<h4>Expense Share With</h4>
+			    <mat-form-field class="text-full-width">
+			        <mat-select 
+			        placeholder="Share With" 
+			        name="year" 
+			        class="filter-select" 
+			        [(ngModel)]="pay.shareMembers" 
+			        multiple 
+			        #memberSelect="ngModel">
+			          <button 
+			              mat-button 
+			              (click)="selectAll(memberSelect, groupDetails['members'])">
+			              Select All
+			            </button>
+			            <button 
+			              mat-button 
+			              (click)="deselectAll(memberSelect)">
+			              Deselect All
+			            </button>
+			          <mat-option *ngFor="let m of groupDetails['members']" [value]="m">
+			            {{m.name}}
+			          </mat-option>
+			        </mat-select>
+			        <em class="frm-error-em" *ngIf="submitted && !pay.shareMembers">Please provide members</em>
+			    </mat-form-field>
+			</div>
+			<mat-form-field class="text-full-width">
+			 <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="pay.payDate">
+			  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+			  <em class="frm-error-em" *ngIf="submitted && !pay.payDate">Please provide date</em>
+			</mat-form-field>
+			<mat-form-field class="text-full-width">
+			 	<mat-select 
+			        placeholder="Expence By" 
+			        name="year" 
+			        class="filter-select" [(ngModel)]="pay.payBy" >
+			         <mat-option *ngFor="let m of groupDetails['members']" [value]="m.id">
+			            {{m.name}}
+			          </mat-option>
+			    </mat-select>
+			    <em class="frm-error-em" *ngIf="submitted && !pay.payBy">Please provide paid by </em>
+			</mat-form-field>
+			<mat-form-field class="text-full-width">
+			    <input matInput placeholder="Amount" value="" [(ngModel)]="pay.amount"  >
+			    <em class="frm-error-em" *ngIf="submitted && !pay.amount">Please provide amount </em>
+			</mat-form-field>
+			<button mat-raised-button color="primary" class="button-full-width" (click)="paySubmit()">Pay</button>
+		</mat-card-content>
+	</mat-card>
+</div>

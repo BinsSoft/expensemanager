@@ -1,0 +1,40 @@
+<header>
+	<div class="left-float"><a href="#/home" mat-mini-fab color="primary">&#8610;</a> Create Group</div>
+	<div class="right-float"></div>
+	<div class="clearfix"></div>
+</header>
+<div class="bottom-container">
+<mat-card>
+	<mat-card-header>
+		<mat-card-title><strong>Group Details</strong></mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-form-field class="text-full-width">
+		    <input matInput placeholder="Name" value="" [(ngModel)]="group.name">
+		</mat-form-field>
+		<em class="error" *ngIf="formError==1 && group.name.trim()==''">Enter the name</em>
+		<mat-form-field class="text-full-width">
+		 <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="group.startdate">
+		  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+		</mat-form-field>
+	</mat-card-content>
+</mat-card>
+<br/>
+<mat-card>
+		<mat-card-content class="text-full-width">
+		<span style="width: 85%;display: inline-block;font-weight: bold;">Group Members</span>
+		<span style=""><button mat-icon-button color="primary" (click)="openDialog()" >&#10010;</button></span>
+		<div class="clearfix"></div>
+		<table class="table" cellpadding="0" cellspacing="0">
+		<tr *ngFor="let i of group.members; let index = index"  >
+			<td > <span (click)="setAdmin(index)">{{ i.name }}</span> <span class="admin-span" *ngIf="i.admin==1">admin</span></td>
+			<td class="text-right"><button mat-icon-button color="warn" (click)="removeItem(index)" *ngIf="i.admin==0">&#10006;</button></td>
+		</tr>
+		</table>
+		</mat-card-content>
+</mat-card>
+<br/>
+<button mat-raised-button color="primary" style="width: 100%" (click)="createGroup()">Create Group</button>
+
+</div>
