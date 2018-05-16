@@ -1,9 +1,47 @@
 <header>
 	<div class="left-float"><a href="#/home" mat-mini-fab color="primary">&#8610;</a>  {{groupDetails['name']}}</div>
-	<div class="right-float"><a href="#/home" class="menu-link"></a></div>
+	<div class="right-float"></div>
 	<div class="clearfix"></div>
 </header>
 <div class="bottom-container" *ngIf="groupDetails">
+	<br/>
+	<mat-card>
+		<table class="table" cellspacing="0">
+			<tr>
+				<td *ngIf="createdUser">
+					<strong>Created User :</strong> <label>{{ createdUser['name'] }}</label>
+				</td>
+				<td *ngIf="adminUser">
+					<strong>Admin User :</strong> <label>{{ adminUser['name'] }}</label>
+				</td>
+			</tr>
+			<tr>
+				<td *ngIf="groupDetails['startdate']">
+					<strong>Started On :</strong> <label>{{ groupDetails['startdate'] | date }}</label>
+				</td>
+				<td *ngIf="groupDetails['createdOn']">
+					<strong>Created On :</strong> <label>{{ groupDetails['createdOn'] | date }}</label>
+				</td>
+			</tr>
+			<tr>
+				<td *ngIf="groupDetails['totalAmount']">
+					<strong>Total :</strong> <label>&#8377; {{ groupDetails['totalAmount'] }}</label>
+				</td>
+				<td align="center">
+					<a href="#/expensehistory?id={{ groupDetails['id'] }}"><strong>&#8827;</strong></a>
+				</td>
+			</tr>
+			<tr>
+				<td *ngIf="groupDetails['totalAmount']">
+					<strong>Stat :</strong>
+				</td>
+				<td align="center">
+					<a href="#/expensehistory?id={{ groupDetails['id'] }}"><strong>&#8827;</strong></a>
+				</td>
+			</tr>
+		</table>
+	</mat-card>
+	<br/>
 	<mat-card>
 		<table class="table" cellspacing="0">
 			<tr *ngFor="let i of groupDetails.members; let index = index"  >

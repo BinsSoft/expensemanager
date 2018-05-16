@@ -18,6 +18,7 @@ export class GroupdetailsComponent implements OnInit {
 	};
 	authUser : any ;
 	adminUser : any ;
+	createdUser : any ;
   constructor(private global : Global, private route: ActivatedRoute, private general : GeneralService, private dialog : MatDialog) {
   		this.authUser = this.global.loggedUser;
 
@@ -28,13 +29,18 @@ export class GroupdetailsComponent implements OnInit {
 		  		this.adminUser = this.groupDetails['members'].find((m)=> {
 		  			return m.admin == 1;
 		  		})
-				/*console.log(this.authUser);
-		  		console.log(this.adminUser);*/
+		  		this.createdUser = this.groupDetails['members'].find((m)=> {
+		  			return m.id == data['createdBy'];
+		  		})
+		  		//console.log(this.groupDetails);
 		  	})
+
 	    });
     }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   openDepositPopup(member, group)
   {

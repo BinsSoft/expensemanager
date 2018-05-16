@@ -21,6 +21,7 @@ import { SignupComponent } from './home/signup/signup.component';
 import { GroupdetailsComponent } from './home/groupdetails/groupdetails.component';
 import { DepositpopupComponent } from './home/groupdetails/depositpopup/depositpopup.component';
 import { PaymentComponent } from './home/groupdetails/payment/payment.component';
+import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expensehistory.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PaymentComponent } from './home/groupdetails/payment/payment.component'
     SignupComponent,
     GroupdetailsComponent,
     DepositpopupComponent,
-    PaymentComponent
+    PaymentComponent,
+    ExpensehistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@
 			<mat-card>
 				<h4>{{ i.name }}</h4>
 				<p>Total : &#8377; {{ i.amount }}</p>
-				<p>Start :  {{ i.date | date }}</p>
+				<p *ngIf="i.date">Start :  {{ i.date | date }}</p>
 				<p>
 					<a mat-raised-button color="primary" class="button-full-width" href="#group-details/?id={{i.id}}" >Go Center</a>
 				</p>

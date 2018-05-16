@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class Global
 {	
 	APPLICATION_NAME =  'expense';
-	API_URL = 'http://localhost:8080';
+	API_URL = 'https://apibinssoft.herokuapp.com';
 	HTTP_HEADER = {
 	  	'Access-Control-Allow-Origin' : "*",
 	  	"Access-Control-Allow-Credentials": "true",

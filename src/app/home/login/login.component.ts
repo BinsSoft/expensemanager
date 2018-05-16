@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   	
     this.form = new FormGroup({
-    	phoneno : new FormControl('',[Validators.required, Validators.pattern('^[0-9]+$')]),
+    	phoneno : new FormControl('',[Validators.required,Validators.maxLength(10), Validators.pattern('^[0-9]+$')]),
     	password : new FormControl('',[Validators.required])
     });
   }

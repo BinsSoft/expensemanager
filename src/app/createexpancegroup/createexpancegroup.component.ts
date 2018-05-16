@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDatepickerModule,MatDialog, MatDialogConfig} from "@angular/material";
+import {  ActivatedRoute,  Router} from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import {Global} from '../global.config';
 import {AdditemComponent} from './additem/additem.component';
@@ -15,15 +16,19 @@ export class CreateexpancegroupComponent implements OnInit {
 	group : any = {
 		name : '',
 		startdate : '',
+		createdBy : '',
+		createdOn : new Date(),
 		members : []
 	};
 	formError : number = 0;
 	constructor(
+		private router : Router,
 		private general : GeneralService,
 		private global : Global,
 		private dialog: MatDialog, private http:HttpClient) {
 		//let user = this.global.getLoggedUser();
 		let user = this.global.loggedUser;
+		this.group['createdBy'] = user['id'];
 		this.group.members.push({
 			'id' : user['id'],
 			'name' : user['name'],
@@ -78,9 +83,12 @@ export class CreateexpancegroupComponent implements OnInit {
 		} else {
 			if (this.group.startdate != '') {
 				this.group.startdate = this.group.startdate.toISOString();
+			} else {
+				delete this.group.startdate;
 			}
+			/*console.log(this.group);*/
 			this.general.createGroup(this.group).subscribe((response)=>{
-				window.location.href = '#/home'
+				this.router.navigate(['/home']);
 			});
 		}
 	}

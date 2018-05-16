@@ -5,6 +5,7 @@ import { LoginComponent } from './home/login/login.component';
 import { SignupComponent } from './home/signup/signup.component';
 import { GroupdetailsComponent } from './home/groupdetails/groupdetails.component';
 import { PaymentComponent } from './home/groupdetails/payment/payment.component';
+import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expensehistory.component';
 export const appRoute : Routes = [
 	{
 		path : 'home',
@@ -29,5 +30,9 @@ export const appRoute : Routes = [
 	{
 		path : 'pay',
 		component : PaymentComponent
-	}
+	},
+	{
+		path : 'expensehistory',
+		component : ExpensehistoryComponent
+	},
 ];

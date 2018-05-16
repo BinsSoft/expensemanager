@@ -44,4 +44,12 @@ export class GeneralService {
 	{
 		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/save-pay', JSON.stringify(postData), this.httpOptions);
 	}
+
+	getGroupExpenseHistory(id) 
+	{
+		let postData = {
+			id : this.global.loggedUser['id']
+		}		
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/user-groups', JSON.stringify(postData), this.httpOptions)		
+	}
 }

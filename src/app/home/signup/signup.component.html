@@ -14,7 +14,7 @@
 
 	<mat-form-field class="text-full-width">
 		<span matPrefix>+91 &nbsp;</span>
-	    <input type="tel" matInput placeholder="Phone No" value="" formControlName="phoneno">
+	    <input type="number" matInput placeholder="Phone No" value="" formControlName="phoneno">
 	    <mat-error *ngIf="form.get('phoneno').invalid && ( form.get('phoneno').dirty)">Please provide phone no</mat-error>
 	</mat-form-field>
 	<mat-error *ngIf="pherror">{{ pherror }}</mat-error>
@@ -31,6 +31,6 @@
 <mat-card  class="item-add-mat-card text-center" *ngIf="signupSuccess==1">
 	Welmcome {{ form.get('name').value }} to expense Manager.
 	<br/>
-	<a href="#/login">Click Here</a> to login
+	<a href="#/">Click Here</a> to login
 </mat-card>
 </div>

@@ -11,7 +11,7 @@
 	<div class="note note-danger" *ngIf="errorMessage">{{errorMessage}}</div>
 	<mat-form-field class="text-full-width">
 		<span matPrefix>+91 &nbsp;</span>
-	    <input matInput placeholder="Phone No" value="" formControlName="phoneno">
+	    <input matInput type="number" placeholder="Phone No" value="" formControlName="phoneno">
 	    <mat-error *ngIf="form.get('phoneno').invalid && ( form.get('phoneno').dirty)">Please provide Phone no</mat-error>
 	</mat-form-field>
 	<mat-form-field class="text-full-width">
