@@ -1,5 +1,8 @@
 <header>
-	<div class="left-float"><a href="#/group-details?id={{ groupDetails['id'] }}" mat-mini-fab color="primary">&#10094;</a> Add Expense</div>
+	<div class="left-float"><a href="#/group-details?id={{ groupDetails['id'] }}" mat-mini-fab color="primary">&#10094;</a> 
+		<span  *ngIf="!pay.id"> Add Expense</span>
+		<span  *ngIf="pay.id"> Edit Expense</span>
+	</div>
 	<div class="right-float"></div>
 	<div class="clearfix"></div>
 </header>
@@ -30,7 +33,7 @@
 			        #memberSelect="ngModel">
 			          <button 
 			              mat-button 
-			              (click)="selectAll(memberSelect, groupDetails['members'])">
+			              (click)="selectAll(memberSelect, members)">
 			              Select All
 			            </button>
 			            <button 
@@ -38,7 +41,7 @@
 			              (click)="deselectAll(memberSelect)">
 			              Deselect All
 			            </button>
-			          <mat-option *ngFor="let m of groupDetails['members']" [value]="m">
+			          <mat-option *ngFor="let m of members" [value]="m">
 			            {{m.name}}
 			          </mat-option>
 			        </mat-select>

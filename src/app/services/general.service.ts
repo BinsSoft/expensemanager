@@ -60,4 +60,9 @@ export class GeneralService {
 		}		
 		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/delete-group-expense', JSON.stringify(postData), this.httpOptions)		
 	}
+
+	addGroupMember(postData)
+	{
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/add-group-member', JSON.stringify(postData), this.httpOptions)			
+	}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GeneralService} from '../../../services/general.service';
-import { ActivatedRoute} from "@angular/router";
+import { ActivatedRoute,Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {DeleteconfirmComponent} from './deleteconfirm/deleteconfirm.component';
 import {Global} from '../../../global.config';
@@ -20,7 +20,7 @@ export class ExpensehistoryComponent implements OnInit {
 	adminUser : any ;
 	createdUser : any ;
 	expenseList : any = [] ;
-  constructor(private global : Global, private route: ActivatedRoute, private general : GeneralService, private dialog : MatDialog) {
+  constructor(private global : Global, private route: ActivatedRoute,private router : Router, private general : GeneralService, private dialog : MatDialog) {
 	this.authUser = this.global.loggedUser;
 	this.getHistory();
 	
@@ -64,6 +64,12 @@ export class ExpensehistoryComponent implements OnInit {
 			})
 		}
 	});
+  }
+
+  editExpense(exp)
+  {
+  	this.global.setExpenseDetails(exp);
+  	this.router.navigate(['/pay'],{queryParams : {gId : this.groupId , pbyid:exp['paidBy'], id : exp['id']  }})
   }
   ngOnInit() {
   }

@@ -25,8 +25,13 @@ export class Global
 		}
 		
 	}
-
 	setLoggedUser(lUser)  {
 		this.loggedUser = lUser; 
+	}
+
+	expenseDetails : any ;
+	setExpenseDetails(details)
+	{
+		this.expenseDetails = details;
 	}
 }

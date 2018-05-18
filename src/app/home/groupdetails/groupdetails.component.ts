@@ -3,6 +3,7 @@ import {GeneralService} from '../../services/general.service';
 import { ActivatedRoute} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {DepositpopupComponent} from './depositpopup/depositpopup.component';
+import {AdditemComponent} from '../../createexpancegroup/additem/additem.component';
 import {Global} from '../../global.config';
 @Component({
   selector: 'app-groupdetails',
@@ -21,8 +22,13 @@ export class GroupdetailsComponent implements OnInit {
 	createdUser : any ;
   constructor(private global : Global, private route: ActivatedRoute, private general : GeneralService, private dialog : MatDialog) {
   		this.authUser = this.global.loggedUser;
+  		this.getGroupDetails();
+  		
+    }
 
-  		this.route.queryParams.subscribe(params => {
+    getGroupDetails()
+    {
+    	this.route.queryParams.subscribe(params => {
 	        this.groupId = params['id'];
 	        this.general.getGroupDetails(this.groupId).subscribe((data)=>{
 		  		this.groupDetails  = data;
@@ -37,7 +43,6 @@ export class GroupdetailsComponent implements OnInit {
 
 	    });
     }
-
   ngOnInit() {
 
   }
@@ -58,5 +63,25 @@ export class GroupdetailsComponent implements OnInit {
 		} 
 	});
   }
+  openAddMemberDialog() {
 
+		const dialogConfig = new MatDialogConfig();
+
+		dialogConfig.disableClose = true;
+		dialogConfig.autoFocus = true;
+
+		const dialogRef = this.dialog.open(AdditemComponent, dialogConfig);
+		dialogRef.afterClosed().subscribe(data => {
+			if(data!= undefined && data.name!='') {
+				
+				let postData = {
+					id : this.groupId,
+					user : data
+				};
+				this.general.addGroupMember(postData).subscribe((response)=>{
+					this.getGroupDetails();
+				})
+			} 
+		} );
+	}
 }

@@ -11,6 +11,7 @@ import {Global} from '../../../global.config';
 })
 export class PaymentComponent implements OnInit {
 	pay : any = {
+		id : '',
 		description : '',
     	category : '',
     	shareMembers : [],
@@ -35,17 +36,42 @@ export class PaymentComponent implements OnInit {
 		name : '',
 		id : ''
 	};
-	members : any ;
+	members : any = [] ;
 	constructor(private global : Global, private route: ActivatedRoute, private router : Router,  private general : GeneralService,) {
 		this.route.queryParams.subscribe(params => {
 		this.pay.payBy = params['pbyid'];
 		this.pay.groupId = params['gId'];
+		this.pay.id = params['id'];
+
 		var authUser = this.global.loggedUser;
 	    this.general.getGroupDetails(params['gId']).subscribe((data)=>{
 	  		this.groupDetails  = data;
-	  		this.pay.shareMembers = data['members'];
+	  		for(let m of this.groupDetails['members']) {
+	  			this.members.push({
+	  				id : m['id'],
+	  				name : m['name']
+	  			});
+	  		}
+	  		
 	  		this.pay.addedBy = authUser['id'];
+		  	if (this.global.expenseDetails && this.pay.id!='') {
+		  		this.pay.description = this.global.expenseDetails['description'];
+		  		this.pay.category = this.global.expenseDetails['type'];
+		  		this.pay.amount = this.global.expenseDetails['amount'];
+		  		this.pay.payDate = this.global.expenseDetails['payDate'];
+		  		for(let m of this.members) {
+		  			var index = this.global.expenseDetails['sharewith'].findIndex((i)=>{
+		  				return i.id == m['id']
+		  			});
+		  			if (index != -1) {
+		  				this.pay.shareMembers.push(m);
+		  			}
+		  		}
+		  	} else {
+		  		this.pay.shareMembers = this.members;
+		  	}
 	  	})
+
 	});
 	}
 
@@ -71,6 +97,5 @@ export class PaymentComponent implements OnInit {
 			this.router.navigate(['/group-details'],{queryParams : {id : this.pay.groupId}})
 			//window.location.href = '#/group-details?id='+this.pay.groupId;
 		})
-		/*console.log(this.pay);*/
 	}
 }
