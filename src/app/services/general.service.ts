@@ -48,8 +48,16 @@ export class GeneralService {
 	getGroupExpenseHistory(id) 
 	{
 		let postData = {
-			id : this.global.loggedUser['id']
+			id : id
 		}		
-		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/user-groups', JSON.stringify(postData), this.httpOptions)		
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/group-expense-history', JSON.stringify(postData), this.httpOptions)		
+	}
+
+	deleteGroupExpense(id) 
+	{
+		let postData = {
+			id : id
+		}		
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/delete-group-expense', JSON.stringify(postData), this.httpOptions)		
 	}
 }

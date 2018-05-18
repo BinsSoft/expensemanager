@@ -34,5 +34,5 @@ export const appRoute : Routes = [
 	{
 		path : 'expensehistory',
 		component : ExpensehistoryComponent
-	},
+	}
 ];

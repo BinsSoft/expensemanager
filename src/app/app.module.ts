@@ -22,6 +22,7 @@ import { GroupdetailsComponent } from './home/groupdetails/groupdetails.componen
 import { DepositpopupComponent } from './home/groupdetails/depositpopup/depositpopup.component';
 import { PaymentComponent } from './home/groupdetails/payment/payment.component';
 import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expensehistory.component';
+import { DeleteconfirmComponent } from './home/groupdetails/expensehistory/deleteconfirm/deleteconfirm.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expe
     GroupdetailsComponent,
     DepositpopupComponent,
     PaymentComponent,
-    ExpensehistoryComponent
+    ExpensehistoryComponent,
+    DeleteconfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,6 @@ import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expe
   ],
   providers: [CookieService,Global,GeneralService],
   bootstrap: [AppComponent],
-  entryComponents: [AdditemComponent,DepositpopupComponent]
+  entryComponents: [AdditemComponent,DepositpopupComponent, DeleteconfirmComponent]
 })
 export class AppModule { }

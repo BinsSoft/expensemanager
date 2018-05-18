@@ -1,5 +1,5 @@
 <header>
-	<div class="left-float"><a href="#/home" mat-mini-fab color="primary">&#8610;</a>  {{groupDetails['name']}}</div>
+	<div class="left-float"><a href="#/home" mat-mini-fab color="primary">&#10094;</a>  {{groupDetails['name']}}</div>
 	<div class="right-float"></div>
 	<div class="clearfix"></div>
 </header>
@@ -28,7 +28,7 @@
 					<strong>Total :</strong> <label>&#8377; {{ groupDetails['totalAmount'] }}</label>
 				</td>
 				<td align="center">
-					<a href="#/expensehistory?id={{ groupDetails['id'] }}"><strong>&#8827;</strong></a>
+					<a href="#/expensehistory?id={{ groupDetails['id'] }}" mat-button><strong>&#10093;</strong></a>
 				</td>
 			</tr>
 			<tr>
@@ -36,7 +36,7 @@
 					<strong>Stat :</strong>
 				</td>
 				<td align="center">
-					<a href="#/expensehistory?id={{ groupDetails['id'] }}"><strong>&#8827;</strong></a>
+					<a href="#/expensehistory?id={{ groupDetails['id'] }}" mat-button><strong>&#10093;</strong></a>
 				</td>
 			</tr>
 		</table>
