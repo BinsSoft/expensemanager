@@ -66,7 +66,7 @@
 			    <em class="frm-error-em" *ngIf="submitted && !pay.payBy">Please provide paid by </em>
 			</mat-form-field>
 			<mat-form-field class="text-full-width">
-			    <input matInput placeholder="Amount" value="" [(ngModel)]="pay.amount"  >
+			    <input type="number" matInput placeholder="Amount" value="" [(ngModel)]="pay.amount"  >
 			    <em class="frm-error-em" *ngIf="submitted && !pay.amount">Please provide amount </em>
 			</mat-form-field>
 			<button mat-raised-button color="primary" class="button-full-width" (click)="paySubmit()">Pay</button>

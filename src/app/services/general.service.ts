@@ -65,4 +65,25 @@ export class GeneralService {
 	{
 		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/add-group-member', JSON.stringify(postData), this.httpOptions)			
 	}
+	deleteGroup(id)
+	{
+		let postData = {
+			id : id
+		}		
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/delete-group', JSON.stringify(postData), this.httpOptions)		
+	}
+
+	deleteGroupUser(groupId, userId)
+	{
+		let postData = {
+			userId : userId,
+			groupId : groupId
+		}		
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/delete-group-user', JSON.stringify(postData), this.httpOptions)			
+	}
+
+	resetPassword(postData)
+	{
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/reset-password', JSON.stringify(postData), this.httpOptions)			
+	}
 }

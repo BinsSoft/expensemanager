@@ -48,6 +48,13 @@ header {
     color: #9e4547;
     font-size: 14px;
 }
+.note.note-success {
+    background: #a4dd9f;
+    border: 1px solid #8BC34A;
+    border-radius: 3px;
+    color: #46773a;
+    font-size: 12px;
+}
 .error {
 	font-style: normal;
 	color: red;

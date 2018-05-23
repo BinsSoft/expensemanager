@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {GeneralService} from '../../services/general.service';
-import { ActivatedRoute} from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {DepositpopupComponent} from './depositpopup/depositpopup.component';
 import {AdditemComponent} from '../../createexpancegroup/additem/additem.component';
+import {DeleteconfirmComponent} from '../deleteconfirm/deleteconfirm.component';
 import {Global} from '../../global.config';
 @Component({
   selector: 'app-groupdetails',
@@ -20,7 +21,7 @@ export class GroupdetailsComponent implements OnInit {
 	authUser : any ;
 	adminUser : any ;
 	createdUser : any ;
-  constructor(private global : Global, private route: ActivatedRoute, private general : GeneralService, private dialog : MatDialog) {
+  constructor(private global : Global, private route: ActivatedRoute, private router : Router, private general : GeneralService, private dialog : MatDialog) {
   		this.authUser = this.global.loggedUser;
   		this.getGroupDetails();
   		
@@ -59,7 +60,7 @@ export class GroupdetailsComponent implements OnInit {
 	dialogRef.componentInstance.group  = group;
 	dialogRef.afterClosed().subscribe(data => {
 		if(data!= undefined ) {
-			window.location.reload();
+			this.getGroupDetails();
 		} 
 	});
   }
@@ -83,5 +84,43 @@ export class GroupdetailsComponent implements OnInit {
 				})
 			} 
 		} );
+	}
+	openDeleteDialog()
+	{
+		const dialogConfig = new MatDialogConfig();
+
+		dialogConfig.disableClose = true;
+		dialogConfig.autoFocus = true;
+
+		const dialogRef = this.dialog.open(DeleteconfirmComponent, dialogConfig);
+		dialogRef.afterClosed().subscribe(data => {
+			console.log(data);
+			if(data['status'] == true) {
+				this.general.deleteGroup(this.groupId).subscribe((response)=>{
+					if (response['status'] == true) {
+						this.router.navigate(['/home']);
+					}
+				})
+			}
+		});
+	}
+	deleteUser(userId)
+	{
+		const dialogConfig = new MatDialogConfig();
+
+		dialogConfig.disableClose = true;
+		dialogConfig.autoFocus = true;
+
+		const dialogRef = this.dialog.open(DeleteconfirmComponent, dialogConfig);
+		dialogRef.afterClosed().subscribe(data => {
+			console.log(data);
+			if(data['status'] == true) {
+				this.general.deleteGroupUser(this.groupId, userId).subscribe((response)=>{
+					if (response['status'] == true) {
+						this.getGroupDetails();
+					}
+				})
+			}
+		});
 	}
 }

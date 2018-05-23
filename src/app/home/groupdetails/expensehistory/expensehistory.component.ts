@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GeneralService} from '../../../services/general.service';
 import { ActivatedRoute,Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material";
-import {DeleteconfirmComponent} from './deleteconfirm/deleteconfirm.component';
+import {DeleteconfirmComponent} from '../../deleteconfirm/deleteconfirm.component';
 import {Global} from '../../../global.config';
 @Component({
   selector: 'app-expensehistory',
@@ -32,12 +32,12 @@ export class ExpensehistoryComponent implements OnInit {
 
 		this.general.getGroupDetails(this.groupId).subscribe((data)=>{
 			this.groupDetails  = data;
-			/*this.adminUser = this.groupDetails['members'].find((m)=> {
+			this.adminUser = this.groupDetails['members'].find((m)=> {
 				return m.admin == 1;
 			})
 			this.createdUser = this.groupDetails['members'].find((m)=> {
 				return m.id == data['createdBy'];
-			})*/
+			})
 			this.general.getGroupExpenseHistory(params['id']).subscribe((response)=>{
 				this.expenseList = response;
 			})
