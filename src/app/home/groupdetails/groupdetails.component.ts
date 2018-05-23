@@ -72,6 +72,7 @@ export class GroupdetailsComponent implements OnInit {
 		dialogConfig.autoFocus = true;
 
 		const dialogRef = this.dialog.open(AdditemComponent, dialogConfig);
+		dialogRef.componentInstance.group  = this.groupDetails;
 		dialogRef.afterClosed().subscribe(data => {
 			if(data!= undefined && data.name!='') {
 				

@@ -45,7 +45,7 @@
 			            {{m.name}}
 			          </mat-option>
 			        </mat-select>
-			        <em class="frm-error-em" *ngIf="submitted && !pay.shareMembers">Please provide members</em>
+			        <em class="frm-error-em" *ngIf="submitted && pay.shareMembers.length == 0">Please provide members</em>
 			    </mat-form-field>
 			</div>
 			<mat-form-field class="text-full-width">

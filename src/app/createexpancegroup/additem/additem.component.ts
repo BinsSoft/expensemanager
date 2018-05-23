@@ -17,6 +17,7 @@ export class AdditemComponent implements OnInit {
 	};
 	searchResult : any = [];
 	searchTerm : FormControl = new FormControl();
+	group : any ;
 	constructor(
 		private generalService : GeneralService,
 		private dialogRef: MatDialogRef<AdditemComponent>,
@@ -24,10 +25,12 @@ export class AdditemComponent implements OnInit {
 
 		this.searchTerm.valueChanges
         .subscribe(data => {
-
-            this.generalService.searchUser(data).subscribe(response =>{
-                this.searchResult = response
-            })
+        	if(data.length > 1){
+	            this.generalService.searchUser(data).subscribe(response =>{
+	            	
+	                this.searchResult = response
+	            })
+	        }
         })
 
 	}

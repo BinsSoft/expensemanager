@@ -92,10 +92,12 @@ export class PaymentComponent implements OnInit {
 	paySubmit()
 	{
 		this.submitted = true;
-		this.general.savePay(this.pay).subscribe((response)=> {
-			
-			this.router.navigate(['/group-details'],{queryParams : {id : this.pay.groupId}})
-			//window.location.href = '#/group-details?id='+this.pay.groupId;
-		})
+		if(this.pay.description !='' && this.pay.category != '' && this.pay.shareMembers.length >0 && this.pay.payDate !='' && this.pay.amount != '') {
+			this.general.savePay(this.pay).subscribe((response)=> {
+				
+				this.router.navigate(['/group-details'],{queryParams : {id : this.pay.groupId}})
+				//window.location.href = '#/group-details?id='+this.pay.groupId;
+			})
+		}
 	}
 }
