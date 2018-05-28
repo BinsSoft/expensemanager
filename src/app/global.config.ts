@@ -5,7 +5,7 @@ export class Global
 {	
 	APPLICATION_NAME =  'expense';
 	API_URL = 'https://apibinssoft.herokuapp.com';
-	//API_URL = 'http://localhost:8080';
+	//API_URL = 'http://18.219.147.166:8080';
 	HTTP_HEADER = {
 	  	'Access-Control-Allow-Origin' : "*",
 	  	"Access-Control-Allow-Credentials": "true",

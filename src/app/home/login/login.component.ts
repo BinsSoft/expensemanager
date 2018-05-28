@@ -18,8 +18,9 @@ export class LoginComponent implements OnInit {
     private cookies : CookieService,
   	private auth : AuthService,
     private global : Global,
-    private route : Router) { }
+    private route : Router) { 
 
+  }
   ngOnInit() {
   	
     this.form = new FormGroup({
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
   		if (responseData['status'] == 0){
 	  		this.errorMessage = responseData['message'];
 	  	} else{
-        this.cookies.set('_u', window.btoa( JSON.stringify(responseData['userdata']) ))
+        this.cookies.set('_u', window.btoa( JSON.stringify(responseData['userdata']) ), 356)
         //window.location.href = '#/home'; 
         this.global.setLoggedUser(responseData['userdata']);
         this.route.navigate(['home']);
