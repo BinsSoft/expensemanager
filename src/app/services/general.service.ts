@@ -86,4 +86,11 @@ export class GeneralService {
 	{
 		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/reset-password', JSON.stringify(postData), this.httpOptions)			
 	}
+
+	getStatistics(id) {
+		let postdata ={
+			id : id
+		};
+		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/group-statistics',JSON.stringify(postdata), this.httpOptions);
+	}
 }

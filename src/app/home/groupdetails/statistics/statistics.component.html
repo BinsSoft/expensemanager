@@ -1,0 +1,54 @@
+
+<header>
+	<div class="left-float"><a href="#/group-details?id={{ groupId }}" mat-mini-fab color="primary">&#10094;</a>
+	<span>Statistics</span>
+	</div>
+	<div class="right-float"></div>
+	<div class="clearfix"></div>
+</header>
+<div class="bottom-container">
+	<mat-card *ngIf="statistics && statistics.category">
+
+		<mat-card-content>
+			<div class="mat-header">
+				Category
+			</div>
+			<table class="table">
+				<tr *ngFor="let c of statistics.category">
+					<td>{{ c['_id'] }}</td>
+					<td>&#8377; {{ c['total']| number  }}</td>
+				</tr>
+			</table>
+		</mat-card-content>
+	</mat-card>
+
+	<mat-card *ngIf="statistics && statistics.paidBy">
+
+		<mat-card-content>
+			<div class="mat-header">
+				Paid User
+			</div>
+			<table class="table">
+				<tr *ngFor="let c of statistics.paidBy">
+					<td>{{ c['name'] }}</td>
+					<td>&#8377; {{ c['total']| number  }}</td>
+				</tr>
+			</table>
+		</mat-card-content>
+	</mat-card>
+
+	<mat-card *ngIf="statistics && statistics.date">
+
+		<mat-card-content>
+			<div class="mat-header">
+				Month
+			</div>
+			<table class="table">
+				<tr *ngFor="let c of statistics.date">
+					<td>{{ c['_id']['month']+'-01-'+c['_id']['year'] | date : "MMMM, yyyy"}}</td>
+					<td>&#8377; {{ c['total']| number }}</td>
+				</tr>
+			</table>
+		</mat-card-content>
+	</mat-card>
+</div>

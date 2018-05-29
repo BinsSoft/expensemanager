@@ -7,6 +7,7 @@ import { GroupdetailsComponent } from './home/groupdetails/groupdetails.componen
 import { PaymentComponent } from './home/groupdetails/payment/payment.component';
 import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expensehistory.component';
 import { ChangepasswordComponent } from './home/changepassword/changepassword.component';
+import { StatisticsComponent } from './home/groupdetails/statistics/statistics.component';
 export const appRoute : Routes = [
 	{
 		path : 'home',
@@ -39,5 +40,10 @@ export const appRoute : Routes = [
 	{
 		path : 'changepassword',
 		component : ChangepasswordComponent
-	}
+	},
+	{
+		path : 'statistics',
+		component : StatisticsComponent
+	},
+	
 ];

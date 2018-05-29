@@ -24,7 +24,7 @@ export class Global
 			this.loggedUser = JSON.parse( atob(authUser));
 		}
 		
-	}
+	} g540279
 	setLoggedUser(lUser)  {
 		this.loggedUser = lUser; 
 	}

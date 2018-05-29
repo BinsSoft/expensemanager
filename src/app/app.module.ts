@@ -24,6 +24,7 @@ import { PaymentComponent } from './home/groupdetails/payment/payment.component'
 import { ExpensehistoryComponent } from './home/groupdetails/expensehistory/expensehistory.component';
 import { DeleteconfirmComponent } from './home/deleteconfirm/deleteconfirm.component';
 import { ChangepasswordComponent } from './home/changepassword/changepassword.component';
+import { StatisticsComponent } from './home/groupdetails/statistics/statistics.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ChangepasswordComponent } from './home/changepassword/changepassword.co
     PaymentComponent,
     ExpensehistoryComponent,
     DeleteconfirmComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

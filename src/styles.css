@@ -22,7 +22,7 @@ body {
 }
 table.table tr td {
 	border-bottom: 1px solid #CCC; 
-	line-height: 40px;
+	line-height: 25px;
 }
 table.table tr:last-of-type td {
 	border-bottom: none; 
