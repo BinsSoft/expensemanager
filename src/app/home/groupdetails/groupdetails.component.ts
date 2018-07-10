@@ -114,7 +114,6 @@ export class GroupdetailsComponent implements OnInit {
 
 		const dialogRef = this.dialog.open(DeleteconfirmComponent, dialogConfig);
 		dialogRef.afterClosed().subscribe(data => {
-			console.log(data);
 			if(data['status'] == true) {
 				this.general.deleteGroupUser(this.groupId, userId).subscribe((response)=>{
 					if (response['status'] == true) {
@@ -123,5 +122,23 @@ export class GroupdetailsComponent implements OnInit {
 				})
 			}
 		});
+	}
+
+	exportDetails()
+	{
+		this.general.downloadFile(this.groupId).subscribe(data => {
+			if (data['status'] == 1) {
+				var a = document.createElement('a');
+		        document.body.appendChild(a);
+		        a.setAttribute('style', 'display: none');
+		        let url = this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/'+this.groupId+'.csv';
+		        a.href = url;
+		        a.download = this.groupDetails['name']+'-export.csv';
+		        a.click();
+		        window.URL.revokeObjectURL(url);
+        		a.remove();
+			}
+		})
+		
 	}
 }

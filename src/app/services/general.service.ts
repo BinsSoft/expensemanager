@@ -93,4 +93,8 @@ export class GeneralService {
 		};
 		return this.http.post(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/group-statistics',JSON.stringify(postdata), this.httpOptions);
 	}
+
+	downloadFile(id) {
+		return this.http.get(this.global.API_URL+'/'+this.global.APPLICATION_NAME+'/export-report/'+id);	
+	}
 }

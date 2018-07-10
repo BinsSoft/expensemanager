@@ -5,6 +5,7 @@
 				<mat-menu #menu="matMenu" class="table-menu">
 				  <a mat-menu-item (click)="openAddMemberDialog()">Add Member</a>
 				  <a mat-menu-item href="#/statistics?id={{groupDetails['id']}}">Statistics</a>
+				  <a mat-menu-item (click)="exportDetails()">Export</a>
 				  <a *ngIf="adminUser && (adminUser['id'] == authUser['id'])" mat-menu-item (click)="openDeleteDialog()">Delete</a>
 				</mat-menu></div>
 	<div class="clearfix"></div>
